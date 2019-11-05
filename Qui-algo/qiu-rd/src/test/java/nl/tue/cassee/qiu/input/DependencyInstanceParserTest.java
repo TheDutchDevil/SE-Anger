@@ -8,4 +8,9 @@ public class DependencyInstanceParserTest {
     public void testNotImplemented() {
         DependencyInstanceParser.parseDependencyString("Some");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullThrowsError() {
+        DependencyInstanceParser.parseDependencyString(null);
+    }
 }
