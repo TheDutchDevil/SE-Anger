@@ -30,7 +30,7 @@ public class Algorithm {
         List<String> featuresDiscovered = new ArrayList<>();
 
         for(var sent : parsedSentences ) {
-
+            Logger.atTrace().log("Processing sentence '{}'", sent.getSentence());
         }
 
         return new Output();

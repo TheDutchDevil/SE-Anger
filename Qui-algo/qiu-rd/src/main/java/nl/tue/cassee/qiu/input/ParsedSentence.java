@@ -9,17 +9,20 @@ import java.util.List;
  * tagging of the sentence.
  */
 public class ParsedSentence {
+    /**
+     * Unique identifier of the sentence, used to later
+     * refer back to sentence.
+     */
+    private String id;
     private String sentence;
     private List<Object> dependencies;
-    private List<Object> posTags;
 
     public ParsedSentence() {
         dependencies = new ArrayList<>();
-        posTags = new ArrayList<>();
     }
 
-    public List<Object> getPosTags() {
-        return posTags;
+    public String getId() {
+        return this.id;
     }
 
     public String getSentence() {
