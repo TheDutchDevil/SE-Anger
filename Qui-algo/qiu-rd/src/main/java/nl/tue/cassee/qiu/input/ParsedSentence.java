@@ -15,7 +15,7 @@ public class ParsedSentence {
      */
     private String id;
     private String sentence;
-    private List<Object> dependencies;
+    private List<DependencyInstance> dependencies;
 
     public ParsedSentence() {
         dependencies = new ArrayList<>();
@@ -29,7 +29,7 @@ public class ParsedSentence {
         return this.sentence;
     }
 
-    public List<Object> getDependencies() {
+    public List<DependencyInstance> getDependencies() {
         return this.dependencies;
     }
 
