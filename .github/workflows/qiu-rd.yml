@@ -2,7 +2,7 @@ name: Qiu algo
 
 on: 
   push:
-    paths: Qui-algo/*
+    paths: Qui-algo/**
 
 jobs:
   build:
