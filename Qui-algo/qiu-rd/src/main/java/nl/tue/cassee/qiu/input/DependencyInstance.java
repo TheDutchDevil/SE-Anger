@@ -34,7 +34,7 @@ public class DependencyInstance {
         return this.target;
     }
 
-    class Node {
+    public static class Node {
         private final String word;
         private final String tag;
 
