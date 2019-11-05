@@ -36,7 +36,7 @@ public class Algorithm {
         return new Output();
     }
 
-    class Output {
+    static class Output {
         public List<String> features = new ArrayList<>();
         public List<String> opinionWords = new ArrayList<>();
     }
