@@ -26,7 +26,7 @@ public class DependencyInstanceParser {
         var output = new ArrayList<DependencyInstance>();
         
         for (var dep : depString.split(";")) {
-            var relName = dep.split("\\(")[0];
+            var relName = dep.split("\\(")[0].split(":")[0];
 
             var targetRaw = dep.split("\\(")[1].split("\\-")[0];
 

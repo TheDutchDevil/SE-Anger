@@ -44,4 +44,21 @@ public class DependencyInstanceParserTest {
         assertEquals("issue", parsedDeps.get(0).getTarget().getWord());
         assertEquals("NN", parsedDeps.get(0).getTarget().getTag());
     }
+
+    @Test
+    public void testComplexDependencyIsTrimmed(){        
+        var rawDep = "conj:and(audio/NN - video/NN)";
+
+        var parsedDeps = DependencyInstanceParser.parseDependencyString(rawDep);
+
+        assertEquals(1, parsedDeps.size());
+
+        assertEquals("conj", parsedDeps.get(0).getRelName());
+
+        assertEquals("video", parsedDeps.get(0).getSource().getWord());
+        assertEquals("NN", parsedDeps.get(0).getSource().getTag());
+        
+        assertEquals("audio", parsedDeps.get(0).getTarget().getWord());
+        assertEquals("NN", parsedDeps.get(0).getTarget().getTag());
+    }
 }

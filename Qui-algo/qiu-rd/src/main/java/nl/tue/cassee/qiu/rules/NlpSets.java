@@ -29,5 +29,5 @@ public class NlpSets {
                                                                 "nn", "npadvmod", "tmod", "num", "number", "prep", "poss",
                                                                 "possessive", "prt", "s", "obj", "obj2", "desc"));
 
-    public static String ConJName = "CONJ";
+    public static String ConJName = "conj";
 }
