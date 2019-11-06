@@ -14,7 +14,7 @@ import nl.tue.cassee.qiu.input.ParsedSentence;
 public class Rule1Test {
     
     @Test
-    public void testRule1() {
+    public void testRule1_1() {
         /**
          * The phone has a good screen
          */
@@ -30,5 +30,21 @@ public class Rule1Test {
 
         assertEquals(1, extracted.size());
         assertEquals("screen", extracted.get(0));
+    }
+
+    @Test
+    public void testRule1_2() {
+        var rawDep = "nsubj(player/NN - iPod/NN); cop(player/NN - is/VBZ); det(player/NN - the/DT); amod(player/NN - best/JJS); compound(player/NN - mp3/NN); punct(player/NN - ./.)";
+
+        var parsed = DependencyInstanceParser.parseDependencyString(rawDep);
+
+        var sentence = new ParsedSentence("1", "iPod is the best mp3 player.", parsed);
+
+        var opinionList = new ArrayList<>(Arrays.asList("best"));
+
+        var extracted = Rule1.process(opinionList, sentence);
+
+        assertEquals(1, extracted.size());
+        assertEquals("player", extracted.get(0));
     }
 }
