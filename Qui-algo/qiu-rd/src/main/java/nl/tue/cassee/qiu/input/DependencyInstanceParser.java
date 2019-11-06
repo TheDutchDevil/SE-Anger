@@ -39,9 +39,9 @@ public class DependencyInstanceParser {
             var targetWord = targetRaw.split("\\/")[0];
             var targetTag = targetRaw.split("\\/")[1].replace(")", "");
 
-            output.add(new DependencyInstance(relName, 
-                            new DependencyInstance.Node(sourceWord, sourceTag), 
-                            new DependencyInstance.Node(targetWord, targetTag)));
+            output.add(new DependencyInstance(relName.trim(),  
+                            new DependencyInstance.Node(targetWord.trim(), targetTag.trim()),
+                            new DependencyInstance.Node(sourceWord.trim(), sourceTag.trim())));
         }
 
         return output;
