@@ -30,7 +30,7 @@ public final class App {
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
         // read some text in the text variable
-        String text = "Does the player play DVD with audio and video?";
+        String text = "Canon G3 has a great lens.";
 
         // create an empty Annotation just with the given text
         Annotation document = new Annotation(text);

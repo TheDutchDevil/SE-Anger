@@ -26,7 +26,27 @@ public class Rule3Test {
 
         var extracted = Rule3.process(featureList, sentence);
 
-        assertEquals(1, extracted.size());
+        assertEquals(2, extracted.size());
         assertEquals("video", extracted.get(0));
+        assertEquals("video", extracted.get(1));
+    }
+
+    @Test
+    public void testRule3_2() {
+        /**
+         * Canon G3 has a great lens.
+         */
+        var rawDep = "compound(G3/NN - Canon/NNP); nsubj(has/VBZ - G3/NN); det(lens/NN - a/DT); amod(lens/NN - great/JJ); dobj(has/VBZ - lens/NN); punct(has/VBZ - ./.)";
+
+        var parsed = DependencyInstanceParser.parseDependencyString(rawDep);
+
+        var sentence = new ParsedSentence("1", "Canon G3 has a great lens", parsed);
+
+        var featureList = new ArrayList<>(Arrays.asList("lens"));
+
+        var extracted = Rule3.process(featureList, sentence);
+
+        assertEquals(1, extracted.size());
+        assertEquals("G3", extracted.get(0));
     }
 }
