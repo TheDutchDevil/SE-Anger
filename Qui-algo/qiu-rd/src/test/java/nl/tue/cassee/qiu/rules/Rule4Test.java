@@ -14,13 +14,32 @@ public class Rule4Test {
     @Test
     public void testRule4_1() {
         /**
-         * The camera is amazing
+         * The camera is amazing and easy to use
          */
         var rawDep = "det(camera/NN - The/DT); nsubj(amazing/JJ - camera/NN); nsubj(easy/JJ - camera/NN); cop(amazing/JJ - is/VBZ); cc(amazing/JJ - and/CC); conj:and(amazing/JJ - easy/JJ); punct(amazing/JJ - ./.)";
 
         var parsed = DependencyInstanceParser.parseDependencyString(rawDep);
 
         var sentence = new ParsedSentence("1", "The camera is amazing and easy.", parsed);
+
+        var featureList = new ArrayList<>(Arrays.asList("amazing"));
+
+        var extracted = Rule4.process(featureList, sentence);
+
+        assertEquals(1, extracted.size());
+        assertEquals("easy", extracted.get(0));
+    }
+
+    @Test
+    public void testRule4_1_reversed() {
+        /**
+         * The camera is amazing and easy to use
+         */
+        var rawDep = "det(camera/NN - The/DT); nsubj(amazing/JJ - camera/NN); nsubj(easy/JJ - camera/NN); cop(amazing/JJ - is/VBZ); cc(amazing/JJ - and/CC); conj:and(easy/JJ - amazing/JJ); punct(easy/JJ - ./.)";
+
+        var parsed = DependencyInstanceParser.parseDependencyString(rawDep);
+
+        var sentence = new ParsedSentence("1", "The camera is easy and amazing.", parsed);
 
         var featureList = new ArrayList<>(Arrays.asList("amazing"));
 

@@ -32,6 +32,26 @@ public class Rule3Test {
     }
 
     @Test
+    public void testRule3_1_reversed() {
+        /**
+         * Does the player play dvd with video and audio?
+         */
+        var rawDep = "det(DVD/NN - the/DT); compound(DVD/NN - player/NN); compound(DVD/NN - play/NN); dobj(Does/VBZ - DVD/NN); case(audio/NN - with/IN); nmod:with(Does/VBZ - audio/NN); cc(audio/NN - and/CC); nmod:with(Does/VBZ - video/NN); conj:and(video/NN - audio/NN); punct(Does/VBZ - ?/.)";
+
+        var parsed = DependencyInstanceParser.parseDependencyString(rawDep);
+
+        var sentence = new ParsedSentence("1", "Does the player play dvd with video and audio?", parsed);
+
+        var featureList = new ArrayList<>(Arrays.asList("audio"));
+
+        var extracted = Rule3.process(featureList, sentence);
+
+        assertEquals(2, extracted.size());
+        assertEquals("video", extracted.get(0));
+        assertEquals("video", extracted.get(1));
+    }
+
+    @Test
     public void testRule3_2() {
         /**
          * Canon G3 has a great lens.

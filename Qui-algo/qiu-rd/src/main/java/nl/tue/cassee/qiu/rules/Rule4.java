@@ -16,11 +16,17 @@ public class Rule4 {
          * Rule4_1
          */
         for(var dependency : sentence.getDependencies()) {
-            if(dependency.getRelName().equals(NlpSets.ConJName) &&
-                NlpSets.OpinionTags.contains(dependency.getSource().getTag()) &&
-                opinions.contains(dependency.getTarget().getWord())) {
+            if(dependency.getRelName().equals(NlpSets.ConJName)) {
+                    if(NlpSets.OpinionTags.contains(dependency.getSource().getTag()) &&
+                        opinions.contains(dependency.getTarget().getWord())) {
 
-                    extracted.add(dependency.getSource().getWord());
+                        extracted.add(dependency.getSource().getWord());
+                    }
+                    if(NlpSets.OpinionTags.contains(dependency.getTarget().getTag()) &&
+                        opinions.contains(dependency.getSource().getWord())) {
+
+                        extracted.add(dependency.getTarget().getWord());
+                    }
                 }
         }
 

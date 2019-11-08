@@ -13,14 +13,21 @@ public class Rule3 {
         var extracted = new ArrayList<String>();
 
         /**
-         * Rule3_1
+         * Rule3_1 (we instantiate this rule in two 
+         * directions)
          */
         for(var dependency : sentence.getDependencies()) {
-            if(dependency.getRelName().equals(NlpSets.ConJName) &&
-                NlpSets.FeatureTags.contains(dependency.getSource().getTag()) &&
-                features.contains(dependency.getTarget().getWord())) {
+            if(dependency.getRelName().equals(NlpSets.ConJName)) {
+                if (NlpSets.FeatureTags.contains(dependency.getSource().getTag()) &&
+                    features.contains(dependency.getTarget().getWord()))  {
+                        
+                        extracted.add(dependency.getSource().getWord());
+                    }
+                if (NlpSets.FeatureTags.contains(dependency.getTarget().getTag()) &&
+                    features.contains(dependency.getSource().getWord())) {
 
-                    extracted.add(dependency.getSource().getWord());
+                        extracted.add(dependency.getTarget().getWord());
+                    }
                 }
         }
 
