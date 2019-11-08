@@ -26,7 +26,7 @@ public class Rule1Test {
 
         var opinionList = new ArrayList<>(Arrays.asList("good"));
 
-        var extracted = Rule1.process(opinionList, sentence);
+        var extracted = Rule1.process1(opinionList, sentence);
 
         assertEquals(1, extracted.size());
         assertEquals("screen", extracted.get(0));
@@ -42,9 +42,9 @@ public class Rule1Test {
 
         var opinionList = new ArrayList<>(Arrays.asList("best"));
 
-        var extracted = Rule1.process(opinionList, sentence);
+        var extracted = Rule1.process2(opinionList, sentence);
 
         assertEquals(1, extracted.size());
-        assertEquals("player", extracted.get(0));
+        assertEquals("iPod", extracted.get(0));
     }
 }

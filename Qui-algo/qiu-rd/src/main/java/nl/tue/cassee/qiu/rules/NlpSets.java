@@ -27,13 +27,14 @@ public class NlpSets {
                                                                 "det", "predet", "preconj", "vmod", 
                                                                 "mwe", "mark", "advmod", "neg", "rcmod", "quantmod", 
                                                                 "nn", "npadvmod", "tmod", "num", "number", "prep", "poss",
-                                                                "possessive", "prt", "s", "obj", "obj2", "desc"));
+                                                                "possessive", "prt", "s", "obj", "obj2", "desc",
+                                                                "nsubj", "csubj"));
 
     public static String ConJName = "conj";
 
-    public static List<String> ObjSubNames = new ArrayList<>(Arrays.asList("dobj", "iobj", "pobj", "nsubj", "csubj"));
+    private static List<String> ObjSubNames = new ArrayList<>(Arrays.asList("dobj", "iobj", "pobj", "nsubj", "csubj"));
 
-    public static List<String> ModNames = new ArrayList<>(Arrays.asList("amod", "appos", "advcl", "pnmod", "subj", 
+    private static List<String> ModNames = new ArrayList<>(Arrays.asList("amod", "appos", "advcl", "pnmod", "subj", 
                                                         "det", "predet", "preconj", "vmod", 
                                                         "mwe", "mark", "advmod", "neg", "rcmod", "quantmod", 
                                                         "nn", "npadvmod", "tmod", "num", "number", "prep", "poss",

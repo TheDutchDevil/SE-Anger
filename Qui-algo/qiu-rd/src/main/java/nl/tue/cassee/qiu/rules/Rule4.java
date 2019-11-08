@@ -2,6 +2,7 @@ package nl.tue.cassee.qiu.rules;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import nl.tue.cassee.qiu.input.ParsedSentence;
 
@@ -9,7 +10,7 @@ import nl.tue.cassee.qiu.input.ParsedSentence;
  * Rule4_1 and Rule4_2 as described in the paper by Qiu etal.
  */
 public class Rule4 {
-    public static List<String> process(List<String> opinions, ParsedSentence sentence) {
+    public static List<String> process1(List<String> opinions, ParsedSentence sentence) {
         var extracted = new ArrayList<String>();
 
         /**
@@ -31,6 +32,13 @@ public class Rule4 {
                 }
         }
 
+        return extracted.stream().distinct().collect(Collectors.toList());
+    }
+
+    public static List<String> process2(List<String> opinions, ParsedSentence sentence) {
+
+        var extracted = new ArrayList<String>();
+
         /**
          * Rule4_2
          */
@@ -50,6 +58,6 @@ public class Rule4 {
              }
          }
 
-        return extracted;
+         return extracted.stream().distinct().collect(Collectors.toList());
     }
 }

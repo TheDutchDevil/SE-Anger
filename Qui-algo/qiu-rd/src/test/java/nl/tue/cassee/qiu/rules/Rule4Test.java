@@ -24,7 +24,7 @@ public class Rule4Test {
 
         var featureList = new ArrayList<>(Arrays.asList("amazing"));
 
-        var extracted = Rule4.process(featureList, sentence);
+        var extracted = Rule4.process1(featureList, sentence);
 
         assertEquals(1, extracted.size());
         assertEquals("easy", extracted.get(0));
@@ -43,7 +43,7 @@ public class Rule4Test {
 
         var featureList = new ArrayList<>(Arrays.asList("amazing"));
 
-        var extracted = Rule4.process(featureList, sentence);
+        var extracted = Rule4.process1(featureList, sentence);
 
         assertEquals(1, extracted.size());
         assertEquals("easy", extracted.get(0));
@@ -62,7 +62,7 @@ public class Rule4Test {
 
         var featureList = new ArrayList<>(Arrays.asList("sexy"));
 
-        var extracted = Rule4.process(featureList, sentence);
+        var extracted = Rule4.process2(featureList, sentence);
 
         assertEquals(2, extracted.size());
         assertEquals("cool", extracted.get(0));

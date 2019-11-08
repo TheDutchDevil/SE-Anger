@@ -3,6 +3,7 @@ package nl.tue.cassee.qiu.rules;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import nl.tue.cassee.qiu.input.DependencyInstance;
 import nl.tue.cassee.qiu.input.ParsedSentence;
@@ -12,7 +13,7 @@ import nl.tue.cassee.qiu.input.ParsedSentence;
  */
 public class Rule1 {
 
-    public  static List<String> process(List<String> opinions, ParsedSentence sentence) {
+    public  static List<String> process1(List<String> opinions, ParsedSentence sentence) {
         var extracted = new ArrayList<String>();
 
         for (var dependency : sentence.getDependencies()) {
@@ -26,6 +27,12 @@ public class Rule1 {
                     extracted.add(dependency.getTarget().getWord());
             }
         }
+
+        return extracted.stream().distinct().collect(Collectors.toList());
+    }
+
+    public  static List<String> process2(List<String> opinions, ParsedSentence sentence) {
+        var extracted = new ArrayList<String>();
 
         /**
          * This loop satifies Rule1_2
@@ -42,11 +49,11 @@ public class Rule1 {
                     opinions.contains(dependencyOne.getSource().getWord()) &&
                     NlpSets.FeatureTags.contains(dependencyTwo.getSource().getTag())) {
                     
-                        extracted.add(dependencyOne.getTarget().getWord());
+                        extracted.add(dependencyTwo.getSource().getWord());
                 }
             }
         }
 
-        return extracted;
+        return extracted.stream().distinct().collect(Collectors.toList());
     }
 }

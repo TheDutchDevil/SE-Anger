@@ -2,6 +2,7 @@ package nl.tue.cassee.qiu.rules;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import nl.tue.cassee.qiu.input.ParsedSentence;
 
@@ -9,7 +10,7 @@ import nl.tue.cassee.qiu.input.ParsedSentence;
  * Implementation of Rule3_1 and Rule3_2
  */
 public class Rule3 {
-    public static List<String> process(List<String> features, ParsedSentence sentence) {
+    public static List<String> process1(List<String> features, ParsedSentence sentence) {
         var extracted = new ArrayList<String>();
 
         /**
@@ -20,7 +21,7 @@ public class Rule3 {
             if(dependency.getRelName().equals(NlpSets.ConJName)) {
                 if (NlpSets.FeatureTags.contains(dependency.getSource().getTag()) &&
                     features.contains(dependency.getTarget().getWord()))  {
-                        
+
                         extracted.add(dependency.getSource().getWord());
                     }
                 if (NlpSets.FeatureTags.contains(dependency.getTarget().getTag()) &&
@@ -30,6 +31,13 @@ public class Rule3 {
                     }
                 }
         }
+
+        return extracted.stream().distinct().collect(Collectors.toList());
+    }
+
+    public static List<String> process2(List<String> features, ParsedSentence sentence) {
+
+        var extracted = new ArrayList<String>();
 
         /**
          * Rule3_2
@@ -50,6 +58,6 @@ public class Rule3 {
              }
          }
 
-        return extracted;
+         return extracted.stream().distinct().collect(Collectors.toList());
     }
 }

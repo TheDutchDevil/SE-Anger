@@ -24,11 +24,10 @@ public class Rule3Test {
 
         var featureList = new ArrayList<>(Arrays.asList("audio"));
 
-        var extracted = Rule3.process(featureList, sentence);
+        var extracted = Rule3.process1(featureList, sentence);
 
-        assertEquals(2, extracted.size());
+        assertEquals(1, extracted.size());
         assertEquals("video", extracted.get(0));
-        assertEquals("video", extracted.get(1));
     }
 
     @Test
@@ -44,11 +43,10 @@ public class Rule3Test {
 
         var featureList = new ArrayList<>(Arrays.asList("audio"));
 
-        var extracted = Rule3.process(featureList, sentence);
+        var extracted = Rule3.process1(featureList, sentence);
 
-        assertEquals(2, extracted.size());
+        assertEquals(1, extracted.size());
         assertEquals("video", extracted.get(0));
-        assertEquals("video", extracted.get(1));
     }
 
     @Test
@@ -64,7 +62,7 @@ public class Rule3Test {
 
         var featureList = new ArrayList<>(Arrays.asList("lens"));
 
-        var extracted = Rule3.process(featureList, sentence);
+        var extracted = Rule3.process2(featureList, sentence);
 
         assertEquals(1, extracted.size());
         assertEquals("G3", extracted.get(0));
