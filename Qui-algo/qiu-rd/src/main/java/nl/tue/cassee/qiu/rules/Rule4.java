@@ -13,7 +13,8 @@ public class Rule4 {
         var extracted = new ArrayList<String>();
 
         /**
-         * Rule4_1
+         * Rule4_1 (we reverse this rule as well, to ensure that order of the
+         * and is not a determining factor)
          */
         for(var dependency : sentence.getDependencies()) {
             if(dependency.getRelName().equals(NlpSets.ConJName)) {
