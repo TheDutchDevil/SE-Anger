@@ -16,6 +16,12 @@ public class DependencyInstance {
     private final Node target;
     private final Node source;
 
+    public DependencyInstance() {
+        relName = null;
+        target = null;
+        source = null;
+    }
+
     public DependencyInstance(String relName, Node source, Node target) {
         this.relName = relName;
         this.source = source;
@@ -37,6 +43,11 @@ public class DependencyInstance {
     public static class Node {
         private final String word;
         private final String tag;
+
+        public Node() {
+            word = null;
+            tag = null;
+        }
 
         public Node(String word, String tag) {
             this.word = word;

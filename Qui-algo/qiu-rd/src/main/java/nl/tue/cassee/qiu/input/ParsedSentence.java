@@ -17,6 +17,10 @@ public class ParsedSentence {
     private String sentence;
     private List<DependencyInstance> dependencies;
 
+    public ParsedSentence() {
+        
+    }
+
     public ParsedSentence(String id, String sentence, List<DependencyInstance> deps) {
         dependencies = deps;
         this.id = id;

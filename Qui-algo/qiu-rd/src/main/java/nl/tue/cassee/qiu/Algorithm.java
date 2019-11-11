@@ -75,6 +75,12 @@ public class Algorithm {
             }
         } while(newlyFound > 0);
 
+        System.out.println("Found features are: ");
+
+        for(var feat : featuresDiscovered) {
+            System.out.println(String.format("\t%s", feat));
+        }
+
         return new Output();
     }
 
