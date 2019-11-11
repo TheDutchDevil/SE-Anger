@@ -12,6 +12,8 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.EnhancedPlusPlusDependenciesAnnotation;
 import edu.stanford.nlp.util.CoreMap;
+import main.processing.PreProcessing;
+import picocli.CommandLine;
 
 /**
  * Hello world!
@@ -25,39 +27,13 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        Properties props = new Properties();
-        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
-        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
-        // read some text in the text variable
-        String text = "If you want to buy a sexy,cool, modern mp3 player you can choose iPod.";
+        var worker = new PreProcessing();
+        
+        new CommandLine(worker).parseArgs(args);
 
-        // create an empty Annotation just with the given text
-        Annotation document = new Annotation(text);
-
-        // run all Annotators on this text
-        pipeline.annotate(document);
-
-        System.out.println(document);
-
-        List<CoreMap> sentences = document.get(SentencesAnnotation.class);
-
-        for(CoreMap sentence: sentences) {
-
-            // this is the Stanford dependency graph of the current sentence
-            SemanticGraph dependencies = sentence.get(EnhancedPlusPlusDependenciesAnnotation.class);
-
-            var rawEdges = new ArrayList<String>();
-
-            for(var dep : dependencies.edgeListSorted()) {
-                rawEdges.add(String.format("%s(%s/%s - %s/%s)", dep.getRelation(), 
-                                dep.getSource().originalText(), 
-                                dep.getSource().get(PartOfSpeechAnnotation.class),
-                                dep.getTarget().originalText(),
-                                dep.getTarget().get(PartOfSpeechAnnotation.class)));
-            }
-
-            System.out.println(rawEdges.stream().collect(Collectors.joining("; ")));
+        if(worker.checkConditions()) {
+            worker.process();
         }
     }
 }
