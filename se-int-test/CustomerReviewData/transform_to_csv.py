@@ -49,6 +49,8 @@ if __name__ == "__main__":
                     sent = ""
                     for j in range(1, len(parts)):
                         sent += parts[j]
+                elif len(parts) < 2:
+                    continue
                 else:
                     sent = parts[1]
 
