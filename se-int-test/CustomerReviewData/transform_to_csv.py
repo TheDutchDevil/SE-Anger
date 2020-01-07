@@ -1,3 +1,17 @@
+'''
+Script that takes the dataset used for the evaluation
+of the paper by Qiu etal. and converts into two
+.csv files that can be used to evaluate our approach.
+
+One .csv file is a list of all lines of text, combined
+with their unique identifier. The second one is a 
+list of ground truth items, where each items is a feature,
+with the accompanying sentence id in which the feature occurs.
+
+The combination of these two files can be used to compute 
+precision and recall.
+'''
+
 import sys
 import os
 import csv
