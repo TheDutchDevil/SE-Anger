@@ -25,3 +25,4 @@ Qui-algo/qiu-rd/.editorconfig
 
 .vscode
 StanfordNlpProcessor/stanfordNlp-processor/.editorconfig
+se-int-test/CustomerReviewData/__pycache__/transform_to_csv.cpython-37-pytest-5.2.1.pyc
